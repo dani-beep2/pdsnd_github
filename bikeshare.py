@@ -58,9 +58,11 @@ def get_filters():
     month = user_outputs[1]
     day = user_outputs[2]
     print('')
+    print('-'*40)
     print("\n".join(["Fetching data for: {}".format(city.title()),
                      "Month: {}".format(month.title()),
                      "Day: {}".format(day.title())]))
+    print('-'*40)
     return city, month, day
 
 def load_data(city, month, day):
