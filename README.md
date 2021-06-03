@@ -10,12 +10,10 @@ Explore US bikeshare data
 This project is an interactive analysis of bikeshare data in Chichago, New York City and Washington.
 
 ### Files used
-Input files:
-chicago.csv
-new_york_city.csv
-washington.csv
-Script:
-bikeshare.py
+
+Input files: chicago.csv, new_york_city.csv, washington.csv
+
+Script: bikeshare.py
 
 ### Credits
 Thanks to Richard for taking us through Git, and Juno and Juan for taking us through Python.
