@@ -58,7 +58,9 @@ def get_filters():
     month = user_outputs[1]
     day = user_outputs[2]
     print('')
-    print("\n".join(["Fetching data for: {}".format(city.title()),"Month: {}".format(month.title()),"Day: {}".format(day.title())]))
+    print("\n".join(["Fetching data for: {}".format(city.title()),
+                     "Month: {}".format(month.title()),
+                     "Day: {}".format(day.title())]))
     return city, month, day
 
 def load_data(city, month, day):
@@ -152,7 +154,8 @@ def station_stats(df):
     # create tuple with loop inputs and outputs: filter, output string and error message if more than one mode
     stn_inputs = (('Start Station','The most commonly used start station is: {}.','start station!'),
                   ('End Station','The most commonly used end station is: {}.','end station!'),
-                  ('Trip','The most commonly used combination of start station and end station trip is: {}.','combination of start station and end station trip!'))
+                  ('Trip','The most commonly used combination of start station and end station trip is: {}.',
+                   'combination of start station and end station trip!'))
     # loop through all station stats
     for stn_input in stn_inputs:
         stn_filter,info_string,error_msg = stn_input  # unpack tuple
