@@ -59,7 +59,11 @@ def get_filters():
     month = user_outputs[1]
     day = user_outputs[2]
     print('')
-    print("\n".join(["Fetching data for: {}".format(city.title()),"Month: {}".format(month.title()),"Day: {}".format(day.title())]))
+    print('-'*40)
+    print("\n".join(["Fetching data for: {}".format(city.title()),
+                     "Month: {}".format(month.title()),
+                     "Day: {}".format(day.title())]))
+    print('-'*40)
     return city, month, day
 
 def load_data(city, month, day):
@@ -123,7 +127,7 @@ def time_stats(df,month,day):
                    ('Hour','The most popular hour for travel is: {}00 hours.','hour!'))
     
     for i in i_range:  # calculate mode for day of week and hour
-        time_filter,print_string,error_msg = time_inputs[i]  # unpack tuple
+        time_filter,info_string,error_msg = time_inputs[i]  # unpack tuple
         mode_val = df[time_filter].mode()
         if len(mode_val) > 1:  # check if more than one most popular day or time for travel, then print all modes
             print(" ".join(["There is more than one most popular",error_msg,"They are:"]))
@@ -132,7 +136,7 @@ def time_stats(df,month,day):
                 print(" {}. {}".format(countr,vals))
                 countr += 1
         else:
-            print(print_string.format(mode_val[0]))
+            print(info_string.format(mode_val[0]))
     
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -153,10 +157,11 @@ def station_stats(df):
     # create tuple with loop inputs and outputs: filter, output string and error message if more than one mode
     stn_inputs = (('Start Station','The most commonly used start station is: {}.','start station!'),
                   ('End Station','The most commonly used end station is: {}.','end station!'),
-                  ('Trip','The most commonly used combination of start station and end station trip is: {}.','combination of start station and end station trip!'))
+                  ('Trip','The most commonly used combination of start station and end station trip is: {}.',
+                   'combination of start station and end station trip!'))
     # loop through all station stats
     for stn_input in stn_inputs:
-        stn_filter,print_string,error_msg = stn_input  # unpack tuple
+        stn_filter,info_string,error_msg = stn_input  # unpack tuple
         mode_val = df[stn_filter].mode()
         if len(mode_val) > 1:  # check if more than one mode for the parameter of interest, then print all modes
             print(" ".join(["There is more than one most commonly used",error_msg,"They are:"]))
@@ -165,7 +170,7 @@ def station_stats(df):
                 print(" {}. {}".format(countr,vals))
                 countr += 1
         else:
-            print(print_string.format(mode_val[0]))
+            print(info_string.format(mode_val[0]))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
